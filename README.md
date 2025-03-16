@@ -45,5 +45,5 @@ If you want to run the code with different assets, modify the main script to use
 
 Example:
 ```python
-img = cv2.imread('../Assets/sunflower.jpg')
+image_path = os.path.join(base_dir, "..", "Assets", "sunflower.jpg")
 ```
