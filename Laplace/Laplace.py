@@ -1,10 +1,19 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
-# 1. Baca gambar
-img = cv2.imread('../Assets/sunflower.jpg') # Change it to the name of the image you want to process dont mess with the path
-img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
+# Dapatkan path absolut ke gambar
+base_dir = os.path.dirname(os.path.abspath(__file__))  # Direktori skrip saat ini
+image_path = os.path.join(base_dir, "..", "Assets", "sunflower.jpg")  # Path ke gambar
+
+# Coba baca gambar
+img = cv2.imread(image_path)
+if img is None:
+    raise FileNotFoundError(f"Gambar tidak ditemukan di: {image_path}")
+
+# Convert BGR to RGB
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 plt.figure(figsize=(12, 8))
 plt.subplot(2, 3, 1)
 plt.imshow(img)
